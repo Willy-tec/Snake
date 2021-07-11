@@ -20,28 +20,28 @@ class Serpent {
 
     haut(){
         let {x, y} = this._coordArr[0]
-        if(y == 0) y = this.maxY
+        if(y == 0) this.fin= true//y = this.maxY
         else y--
         this.checkCollision({x, y})
     }
 
     bas(){
         let {x, y} = this._coordArr[0]
-        if(y == this.maxY) y = 0
+        if(y == this.maxY) this.fin= true//y = 0
         else y++
         this.checkCollision({x, y})
     }
 
     gauche(){
         let {x, y} = this._coordArr[0]
-        if(x == 0) x = this.maxX
+        if(x == 0) this.fin= true//x = this.maxX
         else x--
         this.checkCollision({x, y})
     }
 
     droite(){
         let {x, y} = this._coordArr[0]
-        if(x == this.maxX) x = 0
+        if(x == this.maxX) this.fin= true//x = 0
         else x++
         this.checkCollision({x, y})
     }

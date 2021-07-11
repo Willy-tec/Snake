@@ -45,8 +45,9 @@ body {
 canvas {
   border: .1rem solid black;
   border-radius: .5rem;
-  background: rgba(150, 255, 150, 0.65);
+  background: #d2fbd2;
   -webkit-box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.75);
           box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.75);
+  stroke-linecap: "round";
 }
 /*# sourceMappingURL=style.css.map */

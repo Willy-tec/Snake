@@ -1,4 +1,15 @@
-const WIDTH = 800, HEIGHT = 800, POMME_W = 20, POMME_H= 20, POMME_COLOR = "red", SNAKE_COLOR= "#8CC63F", SNAKE_WIDTH = 20
+const WIDTH = 800, HEIGHT = 800, POMME_W = 20, POMME_H= 20, POMME_COLOR = "red", SNAKE_HEAD_COLOR= "#60C63F", SNAKE_TAIL_COLOR= "#8CC63F", SNAKE_WIDTH = 20
+
+class FindTrueCoord
+{
+    constructor(width, height)
+    {
+        this.width = width;
+        this.height = height;
+    }
+
+}
+
 
 class OwnCanvas{
 
@@ -15,6 +26,7 @@ class OwnCanvas{
         this.height = height
         this.nbCaseX = nbCaseX
         this.nbCaseY = nbCaseY
+        this.find = new FindTrueCoord(this.width, this.height)
     }
 
     drawPomme(coord, pomme){
@@ -28,20 +40,39 @@ class OwnCanvas{
 
     drawSnake(arr, dir, snake){
         let ctx = this.ctx;
-        let x = (this.stepX/4).toFixed(2)
-        let padX = (x/2).toFixed(2)
-        console.log(padX)
-        ctx.fillStyle = SNAKE_COLOR
+        let x = (this.stepX / 4).toFixed(2);
+        let padX = (x / 2).toFixed(2);
+        let f = this.find;
+        ctx.fillStyle = SNAKE_HEAD_COLOR
+        ctx.strokeStyle = SNAKE_TAIL_COLOR
+
+        ctx.lineCap = "round"
+        ctx.lineWidth = 20
+        ctx.beginPath();
+        ctx.moveTo(arr[0].x*this.stepX+this.stepX/2, arr[0].y*this.stepY+this.stepY/2)
         arr.forEach((element, index) => {
-            if(index === 0){ ctx.fillRect(element.x*this.stepX, element.y*this.stepY, this.stepX, this.stepY )}
-            else ctx.fillRect(((element.x*this.stepX)+(+padX)), ((element.y*this.stepY)+(+padX)), this.stepX-x, this.stepY-x )
+            /*             if(index === 0){ ctx.fillRect(element.x*this.stepX, element.y*this.stepY, this.stepX, this.stepY )}
+            else ctx.fillRect(((element.x*this.stepX)+(+padX)), ((element.y*this.stepY)+(+padX)), this.stepX-x, this.stepY-x ) */
+            ctx.lineTo(element.x*this.stepX+this.stepX/2, element.y*this.stepY+this.stepY/2)
+            //ctx.fillRect(element.x*this.stepX, element.y*this.stepY, this.stepX, this.stepY )
         });
+        ctx.stroke();
+        ctx.fillRect(((arr[0].x * this.stepX) + (+padX)), ((arr[0].y * this.stepY) + (+padX)), this.stepX - x, this.stepY - x)
+        ctx.closePath()
     }
     clear(){
         this.ctx.clearRect(0, 0, this.width, this.height)
     }
     getMax(){
         return {maxX : this.nbCaseX-1, maxY: this.nbCaseY-1 }
+    }
+    drawEnd(score)
+    {
+        let ctx = this.ctx;
+        ctx.font = "58px Roboto"
+        let str = `Score : ${ score }`
+        ctx.fillText(str, this.width / 2 - 150, this.height / 2)
+        ctx.fillText("Press enter for reboot",this.width/2 - 250, this.height/2+58)
     }
 
 }

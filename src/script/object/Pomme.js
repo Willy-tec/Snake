@@ -6,10 +6,14 @@ class Pomme{
         this.img.src = "src/img/pomme.png"
         this.img.onload = ()=>this.isOk = true
     }
-    add(){
-        let x = Math.floor(Math.random()*this.maxX)
-        let y = Math.floor(Math.random()*this.maxY)
+    add(sArr)
+    {
+        let x, y;
 
+    x = Math.floor(Math.random()*this.maxX)
+    y = Math.floor(Math.random()*this.maxY)
+
+        console.log(sArr.includes({ x, y }))
         this._arr.push({x , y})
     }
     getArr(){
