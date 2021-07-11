@@ -85,7 +85,7 @@ function checkSerpentMangePomme(s, p, r){
                 r.add(serpent.getCoordArr())
             }
 
-            FRAME_TIME = FRAME_TIME > 250 ? FRAME_TIME - 10 : FRAME_TIME > 100 ? FRAME_TIME - 5 : FRAME_TIME -1
+            FRAME_TIME = FRAME_TIME > 300 ? FRAME_TIME - 5 : FRAME_TIME > 200 ? FRAME_TIME - 2 : FRAME_TIME -1
             printInfo()
         }
     })
@@ -107,7 +107,7 @@ function printInfo()
         scoreRecord = score
         window.localStorage.setItem("score", score)
     } 
-    vitDiv.innerHTML = 510 - FRAME_TIME // (1000/FRAME_TIME).toFixed(2)
+    vitDiv.innerHTML = 410 - FRAME_TIME // (1000/FRAME_TIME).toFixed(2)
     highscoreDiv.innerHTML = scoreRecord
 }
 
@@ -130,7 +130,7 @@ function newGame()
     pomme.add(serpent.getCoordArr())
     //score = 1                   
     time = Date.now()
-    FRAME_TIME = 500
+    FRAME_TIME = 400
     printInfo()
 }
 newGame()
