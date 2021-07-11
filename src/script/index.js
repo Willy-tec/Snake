@@ -89,7 +89,7 @@ function printInfo()
         scoreRecord = score
         window.localStorage.setItem("score", score)
     } 
-    vitDiv.innerHTML = FRAME_TIME // (1000/FRAME_TIME).toFixed(2)
+    vitDiv.innerHTML = 510 - FRAME_TIME // (1000/FRAME_TIME).toFixed(2)
     highscoreDiv.innerHTML = scoreRecord
 }
 
