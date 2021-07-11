@@ -11,20 +11,26 @@ html {
 }
 
 body {
-  font-size: 5rem;
+  font-size: 3rem;
 }
 
 .info {
   position: absolute;
-  top: 50%;
-  left: 0;
-  -webkit-transform: translateX(50%) translateY(-50%);
-          transform: translateX(50%) translateY(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  top: 1rem;
+  left: 1rem;
   border-radius: .5rem;
-  background-color: #eee;
+  background-color: rgba(0, 0, 0, 0.3);
   padding: 3rem;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .app {
@@ -45,7 +51,7 @@ body {
 canvas {
   border: .1rem solid black;
   border-radius: .5rem;
-  background: #d2fbd2;
+  background: #d2fbd255;
   -webkit-box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.75);
           box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.75);
   stroke-linecap: "round";

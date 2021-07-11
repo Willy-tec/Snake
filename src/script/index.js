@@ -100,7 +100,10 @@ function newGame()
     cancelAnimationFrame(jeu)
     jeu = requestAnimationFrame(game)
     doc.innerHTML = ""
-    dessin = new OwnCanvas({div: doc})
+    let size =Math.min(window.innerWidth, window.innerHeight) -25
+    
+    
+    dessin = new OwnCanvas({div: doc, width:size, height:size})
     serpent  = new Serpent(dessin.getMax())
     pomme = new Pomme(dessin.getMax())
 
@@ -112,3 +115,4 @@ function newGame()
     printInfo()
 }
 newGame()
+window.onresize = newGame

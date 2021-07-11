@@ -1,16 +1,5 @@
 const WIDTH = 800, HEIGHT = 800, POMME_W = 20, POMME_H= 20, POMME_COLOR = "red", SNAKE_HEAD_COLOR= "#60C63F", SNAKE_TAIL_COLOR= "#8CC63F", SNAKE_WIDTH = 20
 
-class FindTrueCoord
-{
-    constructor(width, height)
-    {
-        this.width = width;
-        this.height = height;
-    }
-
-}
-
-
 class OwnCanvas{
 
     constructor({div, width = WIDTH, height = HEIGHT, nbCaseX = POMME_W, nbCaseY = POMME_H}){
@@ -26,7 +15,6 @@ class OwnCanvas{
         this.height = height
         this.nbCaseX = nbCaseX
         this.nbCaseY = nbCaseY
-        this.find = new FindTrueCoord(this.width, this.height)
     }
 
     drawPomme(coord, pomme){
@@ -42,7 +30,6 @@ class OwnCanvas{
         let ctx = this.ctx;
         let x = (this.stepX / 4).toFixed(2);
         let padX = (x / 2).toFixed(2);
-        let f = this.find;
         ctx.fillStyle = SNAKE_HEAD_COLOR
         ctx.strokeStyle = SNAKE_TAIL_COLOR
 
@@ -51,10 +38,7 @@ class OwnCanvas{
         ctx.beginPath();
         ctx.moveTo(arr[0].x*this.stepX+this.stepX/2, arr[0].y*this.stepY+this.stepY/2)
         arr.forEach((element, index) => {
-            /*             if(index === 0){ ctx.fillRect(element.x*this.stepX, element.y*this.stepY, this.stepX, this.stepY )}
-            else ctx.fillRect(((element.x*this.stepX)+(+padX)), ((element.y*this.stepY)+(+padX)), this.stepX-x, this.stepY-x ) */
             ctx.lineTo(element.x*this.stepX+this.stepX/2, element.y*this.stepY+this.stepY/2)
-            //ctx.fillRect(element.x*this.stepX, element.y*this.stepY, this.stepX, this.stepY )
         });
         ctx.stroke();
         ctx.fillRect(((arr[0].x * this.stepX) + (+padX)), ((arr[0].y * this.stepY) + (+padX)), this.stepX - x, this.stepY - x)
