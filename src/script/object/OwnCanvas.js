@@ -42,7 +42,7 @@ class OwnCanvas{
         ctx.strokeStyle = SNAKE_TAIL_COLOR
 
         ctx.lineCap = "round"
-        ctx.lineWidth = this.stepX
+        ctx.lineWidth = Math.floor(this.stepX/2)
         ctx.beginPath();
         ctx.moveTo(arr[0].x*this.stepX+this.stepX/2, arr[0].y*this.stepY+this.stepY/2)
         arr.forEach((element, index) => {
