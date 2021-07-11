@@ -137,7 +137,8 @@ function newGame()
     jeu = requestAnimationFrame(game)
     doc.innerHTML = ""
     let size =Math.min(window.innerWidth, window.innerHeight) -25
-    
+    pause = false
+    pauseCount = 1
     
     dessin = new OwnCanvas({div: doc, width:size, height:size})
     serpent  = new Serpent(dessin.getMax())
