@@ -15,18 +15,22 @@ let doc = document.querySelector(".app")
 let scoreDiv = document.querySelector(".score")
 let vitDiv = document.querySelector(".vitesse")
 let highscoreDiv = document.querySelector(".highscore")
+let pauseDiv = document.querySelector(".pause")
 highscoreDiv.innerHTML = scoreRecord
 
 let dessin
-    ,serpent
+    , serpent
     , pomme
-    ,rottenPomme
-    ,dir                 
-    ,time
-    ,jeu
+    , rottenPomme
+    , dir
+    , time
+    , jeu
     , lastMove
     , count = 0
-    ,maxRotten=0
+    , maxRotten = 0
+    , pause = false
+    , pauseCount = 1
+    
 
 function game()
 {
@@ -41,10 +45,7 @@ function game()
             case "ArrowDown" : serpent.bas(); break;
             case "ArrowLeft" : serpent.gauche(); break;
             case "ArrowRight" : serpent.droite(); break;
-        
         }
-        //else serpent.droite()
-
         dessin.drawSnake(serpent.getCoordArr(), dir, serpent)
         checkSerpentMangePomme(serpent, pomme, rottenPomme)
         dessin.drawPomme(pomme.getArr(), pomme)
@@ -61,13 +62,28 @@ function game()
 window.addEventListener("keydown", (e) =>
 {
     if (e.key == "Enter") newGame()
+    else if (e.key === " ")
+    {
+        if (pause)
+        {
+            pause = false
+            jeu = requestAnimationFrame(game)
+        }
+        else if(pauseCount > 0)
+        {
+            pause = true
+            pauseCount--
+            printInfo()
+            cancelAnimationFrame(jeu)
+        }
+        console.log("space")
+    }
     else dir.push(e.key)
 })
 
 
 function fin(){
     cancelAnimationFrame(jeu)
-    console.log("Le jeu est fini")
     if(scoreRecord < serpent.getSize()) window.localStorage.setItem("score", serpent.getSize())
     dessin.drawEnd(serpent.getSize())
 }
@@ -79,13 +95,14 @@ function checkSerpentMangePomme(s, p, r){
             p.del({x , y})
             s.addCoord({x, y})
             p.add(serpent.getCoordArr())
-            if (Math.floor(Math.random() * 10) === 1)
+            if (Math.floor(Math.random() * 15) === 1)
             {
                 p.add(serpent.getCoordArr())
                 r.add(serpent.getCoordArr())
             }
 
-            FRAME_TIME = FRAME_TIME > 300 ? FRAME_TIME - 5 : FRAME_TIME > 200 ? FRAME_TIME - 2 : FRAME_TIME -1
+            FRAME_TIME = FRAME_TIME > 300 ? FRAME_TIME - 5 : FRAME_TIME > 200 ? FRAME_TIME - 2 : FRAME_TIME - 1
+            if(s.getSize()%15 == 0) pauseCount++
             printInfo()
         }
     })
@@ -109,6 +126,7 @@ function printInfo()
     } 
     vitDiv.innerHTML = 410 - FRAME_TIME // (1000/FRAME_TIME).toFixed(2)
     highscoreDiv.innerHTML = scoreRecord
+    pauseDiv.innerHTML = pauseCount
 }
 
 function newGame()

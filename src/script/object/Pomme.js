@@ -9,10 +9,12 @@ class Pomme{
     add(sArr)
     {
         let x, y;
-
-    x = Math.floor(Math.random()*this.maxX)
-    y = Math.floor(Math.random()*this.maxY)
-
+        do
+        {
+            x = Math.floor(Math.random()*this.maxX)
+            y = Math.floor(Math.random()*this.maxY)
+        }
+        while(sArr.filter(el => el.x ==x && el.y == y).length>0)
 
         this._arr.push({x , y})
     }

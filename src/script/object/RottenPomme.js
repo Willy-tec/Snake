@@ -6,15 +6,23 @@ class RottenPomme{
         this.img.src = "src/img/pomme.png"
         this.img.onload = ()=>this.isOk = true
     }
-    add(tailleMax)
+    add(sArr)
     {
         let x, y;
 
-    x = Math.floor(Math.random()*this.maxX)
-    y = Math.floor(Math.random()*this.maxY)
-
+        do
+        {
+            x = Math.floor(Math.random()*this.maxX)
+            y = Math.floor(Math.random()*this.maxY)
+        }
+        while (sArr.filter(el => el.x == x && el.y == y).length > 0
+            || sArr[0].x + 1 == x && sArr[0].y == y
+            || sArr[0].x - 1 == x && sArr[0].y == y
+            || sArr[0].x  == x && sArr[0].y + 1 == y
+            || sArr[0].x  == x && sArr[0].y - 1 == y
+        )
         this._arr.push({ x, y })
-        if(this._arr.length>tailleMax)this._arr.shift()
+       // if(this._arr.length>tailleMax)this._arr.shift()
     }
     getArr(){
         return this._arr

@@ -3,7 +3,6 @@ import { Coord } from "./Coord.mjs";
 
 class Serpent {
     constructor({maxX, maxY}) {
-        console.log("serpent construit")
         this._coordArr = [{x:1, y:1}]
         this.maxX = maxX
         this.maxY = maxY
@@ -11,8 +10,8 @@ class Serpent {
         this.img = new Image();
         this.img.src= "src/img/Snake.png"
     }
-    addCoord(coord){
-        this._coordArr.push(coord)
+    addCoord(){
+        this._coordArr.push(this._coordArr[this._coordArr.length-1])
     }
 
     getCoordArr(){return this._coordArr}
@@ -49,7 +48,6 @@ class Serpent {
     checkCollision({x, y}){
         this._coordArr.forEach(el => {
             if(el.x === x && el.y === y){
-                console.log("Collision detecté : ", x, y)
                 this.fin = true
             } 
         })
