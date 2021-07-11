@@ -21,7 +21,6 @@ class OwnCanvas{
         let ctx = this.ctx
         ctx.fillStyle = POMME_COLOR
         coord.forEach(el => {
-            /* ctx.fillRect(el.x*this.stepX, el.y*this.stepY, this.stepX, this.stepY ) */
             ctx.drawImage(pomme.img, el.x*this.stepX, el.y*this.stepY, this.stepX, this.stepY)
         })
 

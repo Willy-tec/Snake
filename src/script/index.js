@@ -11,6 +11,7 @@ let vitDiv = document.querySelector(".vitesse")
 let dessin = new OwnCanvas({div: doc})
 let serpent  = new Serpent(dessin.getMax())
 let pomme = new Pomme(dessin.getMax())
+
 let dir
 let score = 0
 pomme.add()
@@ -36,7 +37,8 @@ pomme.add()
                         dessin.drawPomme(pomme.getArr(), pomme)
                         
                     }, 
-                    FRAME_TIME); 
+     FRAME_TIME);
+                    
 window.addEventListener("keydown", (e)=>{
     dir = e.key
 })
