@@ -7,17 +7,21 @@ html
     height: 100vh
 body
     font-size: 3rem
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
 .info
-    position: absolute
+
     display: flex
     flex-direction: column
-    top: 1rem
-    left: 1rem 
+
     border-radius: .5rem
     background-color: rgba(0, 0, 0, .3)
     padding: 3rem
     box-shadow: 0 0 10px rgba(0, 0, 0, .5)
     color: rgba(255, 255, 255, .3)
+    max-height: 20rem
  
 .app
     font-size: 20rem
@@ -32,3 +36,9 @@ canvas
     background: #d2fbd255
     box-shadow: .5rem .5rem .5rem rgba(0,0,0, .75 )
     stroke-linecap: "round"
+
+@media screen and ( max-width: 1000px )
+    .info
+        position: absolute
+        bottom: 0
+    

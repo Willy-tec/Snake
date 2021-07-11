@@ -12,10 +12,22 @@ html {
 
 body {
   font-size: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .info {
-  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -23,14 +35,13 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  top: 1rem;
-  left: 1rem;
   border-radius: .5rem;
   background-color: rgba(0, 0, 0, 0.3);
   padding: 3rem;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   color: rgba(255, 255, 255, 0.3);
+  max-height: 20rem;
 }
 
 .app {
@@ -55,5 +66,12 @@ canvas {
   -webkit-box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.75);
           box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.75);
   stroke-linecap: "round";
+}
+
+@media screen and (max-width: 1000px) {
+  .info {
+    position: absolute;
+    bottom: 0;
+  }
 }
 /*# sourceMappingURL=style.css.map */

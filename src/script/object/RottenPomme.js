@@ -1,4 +1,4 @@
-class Pomme{
+class RottenPomme{
     constructor(max){
         this && Object.assign(this, max)
         this._arr = []
@@ -6,15 +6,15 @@ class Pomme{
         this.img.src = "src/img/pomme.png"
         this.img.onload = ()=>this.isOk = true
     }
-    add(sArr)
+    add(tailleMax)
     {
         let x, y;
 
     x = Math.floor(Math.random()*this.maxX)
     y = Math.floor(Math.random()*this.maxY)
 
-
-        this._arr.push({x , y})
+        this._arr.push({ x, y })
+        if(this._arr.length>tailleMax)this._arr.shift()
     }
     getArr(){
         return this._arr
@@ -26,4 +26,4 @@ class Pomme{
     }
 }
 
-export {Pomme}
+export {RottenPomme}

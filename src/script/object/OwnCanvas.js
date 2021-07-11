@@ -1,4 +1,4 @@
-const WIDTH = 800, HEIGHT = 800, POMME_W = 20, POMME_H= 20, POMME_COLOR = "red", SNAKE_HEAD_COLOR= "#60C63F", SNAKE_TAIL_COLOR= "#8CC63F", SNAKE_WIDTH = 20
+const WIDTH = 800, HEIGHT = 800, POMME_W = 20, POMME_H= 20,ROTTEN_POMME_COLOR= "brown", POMME_COLOR = "red", SNAKE_HEAD_COLOR= "#60C63F", SNAKE_TAIL_COLOR= "#8CC63F", SNAKE_WIDTH = 20
 
 class OwnCanvas{
 
@@ -25,6 +25,14 @@ class OwnCanvas{
         })
 
     }
+    drawRottenPomme(coord){
+        let ctx = this.ctx
+        ctx.fillStyle = ROTTEN_POMME_COLOR
+        coord.forEach(el => {
+            ctx.fillRect(el.x * this.stepX, el.y * this.stepY, this.stepX, this.stepY)
+        })
+
+    }
 
     drawSnake(arr, dir, snake){
         let ctx = this.ctx;
@@ -34,7 +42,7 @@ class OwnCanvas{
         ctx.strokeStyle = SNAKE_TAIL_COLOR
 
         ctx.lineCap = "round"
-        ctx.lineWidth = 20
+        ctx.lineWidth = this.stepX
         ctx.beginPath();
         ctx.moveTo(arr[0].x*this.stepX+this.stepX/2, arr[0].y*this.stepY+this.stepY/2)
         arr.forEach((element, index) => {
